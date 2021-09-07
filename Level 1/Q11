@@ -32,8 +32,7 @@ while(temp!=0){
          else{
              mult*=10;
          }
-         
-         
+    
      }
      
      int q=n/div;
