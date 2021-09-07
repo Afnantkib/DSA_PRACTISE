@@ -1,0 +1,53 @@
+import java.util.*;
+    
+    public class Main{
+    
+    public static void main(String[] args) {
+      // write your code here  
+      
+      Scanner sc=new Scanner(System.in);
+      int n;
+n=sc.nextInt();
+
+int div=1;
+int temp=n;
+while(n>=10){
+    n/=10;
+    div*=10;
+   
+}
+while(div!=0){
+    int q=temp/div;
+    temp%=div;
+    System.out.println(q);
+    div/=10;
+    
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     }
+    }
