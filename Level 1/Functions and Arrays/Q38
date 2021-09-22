@@ -1,0 +1,59 @@
+import java.util.*;
+  
+  public class Main{
+  public static int b2d(int n,int b){
+      int dn1=0,pw=1;
+      while(n>0){
+          int rem=n%10;
+          dn1+=rem*pw;
+          pw*=b;
+          n/=10;
+          
+      }
+    
+      return dn1;
+  
+  }
+  public static int d2b(int n,int b){
+      int dn2=0,pw=1;
+      while(n>0){
+          
+          int rem=n%b;
+          dn2+=rem*pw;
+          pw*=10;
+          
+          n/=b;
+          
+          
+          
+      }
+      
+      
+      return dn2;
+      
+      
+      
+  }
+  public static void main(String[] args) {
+      Scanner scn = new Scanner(System.in);
+      int n = scn.nextInt();
+      int sourceBase = scn.nextInt();
+     int  destBase= scn.nextInt();
+     
+     int dn1=b2d(n,sourceBase);
+     int dn2=d2b(dn1,destBase);
+     System.out.print(dn2);
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+   }   
+  }
