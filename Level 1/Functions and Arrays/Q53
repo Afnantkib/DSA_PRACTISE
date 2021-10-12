@@ -1,0 +1,76 @@
+import java.io.*;
+import java.util.*;
+
+public class Main{
+public static int binary(int n){
+    int ans=0,p=1;
+    while(n>0){
+        int rem=n%2;
+        n/=2;
+        ans+=rem*p;
+        p*=10;
+        
+        
+        
+    }
+    return ans;
+    
+    
+    
+    
+    
+}
+public static void main(String[] args) throws Exception {
+    // write your code here
+    
+   Scanner sc=new Scanner(System.in);
+   int n=sc.nextInt();
+   int[] arr=new int[n];
+   for(int i=0;i<n;i++){
+       arr[i]=sc.nextInt();
+       
+   }
+   
+   int t=(int)Math.pow(2,n);
+
+   for(int i=0;i<t;i++){
+        int div=(int)Math.pow(10,n-1);
+       int b=binary(i);
+      
+       for(int j=0;j<n;j++){
+           int q=b/div;
+           int r=b%div;
+           b=r;
+           div/=10;
+          if(q==0){
+              System.out.print("-\t");
+          }
+          else{
+              System.out.print(arr[j]+"\t");
+          }
+           
+           
+       }
+       System.out.println();
+       
+       
+       
+       
+       
+       
+       
+   }
+   
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+ }
+
+}
