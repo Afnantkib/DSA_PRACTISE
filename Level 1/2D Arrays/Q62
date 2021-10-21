@@ -1,0 +1,225 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int m=sc.nextInt();
+        int[][] arr=new int[n][m];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                
+                arr[i][j]=sc.nextInt();
+            }
+            
+            
+        }
+        
+        int s=sc.nextInt();
+        int r=sc.nextInt();
+        int minr=s-1,minc=s-1,maxr=n-s,maxc=m-s;
+        int elem=2*(maxr-minr+1)+2*(maxc-minc+1)-4;
+        
+      //extracting the ring with the help of a oneD array
+        int[] one=getone(arr,minc,minr,maxr,maxc,elem);
+   
+        //rotate the extracted ring
+
+        rotate(one,r);
+        
+        //fit the extracted ring back to the 2d array
+        
+        fit(arr,one,minc,minr,maxr,maxc);
+        
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                
+                System.out.print(arr[i][j]+" ");
+            }
+            System.out.println();
+            
+            
+            
+            
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }
+    
+    
+    public static void rotate(int[] one,int r){
+        
+        r%=one.length;
+        if(r<0){
+            r+=one.length;
+        }
+       
+       reverse(one,0,one.length-r-1);
+       reverse(one,one.length-r,one.length-1);
+       reverse(one,0,one.length-1);
+        
+        
+        
+        
+        
+    }
+    public static void reverse(int[] arr,int l,int r){
+        
+        while(l<r){
+            
+            int temp=arr[l];
+            arr[l]=arr[r];
+            arr[r]=temp;
+            l++;
+            r--;
+            
+            
+            
+            
+            
+            
+            
+            
+        }
+        
+        
+        
+        
+        
+        
+        
+    }
+    
+    public static void fit(int[][] arr, int[] one,int minc,int minr,int maxr,int maxc){
+        int idx=0;
+        
+         while(idx<one.length){
+            
+            for(int i=minr;i<=maxr;i++){
+                
+                arr[i][minc]=one[idx];
+                idx++;
+                
+            }
+            
+            minc++;
+            
+            for(int i=minc;i<=maxc;i++){
+                
+               arr[maxr][i]= one[idx];
+                idx++;
+                
+                
+            }
+            
+            maxr--;
+            
+            for(int i=maxr;i>=minr;i--){
+                arr[i][maxc]=one[idx];
+                idx++;
+                
+                
+                
+            }
+            maxc--;
+            
+            for(int i=maxc;i>=minc;i--){
+                arr[minr][i]=one[idx];
+                idx++;
+            }
+            
+            
+            
+            
+        }
+        
+        
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    public static int[] getone(int[][] arr,int minc,int minr, int maxr,int maxc,int elem){
+        int idx=0;
+        int[] one=new int[elem];
+        while(idx<one.length){
+            
+            for(int i=minr;i<=maxr;i++){
+                
+                one[idx]=arr[i][minc];
+                idx++;
+                
+            }
+            
+            minc++;
+            
+            for(int i=minc;i<=maxc;i++){
+                
+                one[idx]=arr[maxr][i];
+                idx++;
+                
+                
+            }
+            
+            maxr--;
+            
+            for(int i=maxr;i>=minr;i--){
+                one[idx]=arr[i][maxc];
+                idx++;
+                
+                
+                
+            }
+            maxc--;
+            
+            for(int i=maxc;i>=minc;i--){
+                one[idx]=arr[minr][i];
+                idx++;
+            }
+            
+            
+            
+            
+        }
+        
+        
+        
+        
+        
+        
+        return one;
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+
+    public static void display(int[][] arr){
+        for(int i = 0; i < arr.length; i++){
+            for(int j = 0; j < arr[0].length; j++){
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+}
