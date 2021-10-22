@@ -1,0 +1,34 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+	public static String toggleCase(String str){
+		//write your code here
+		StringBuilder sb=new StringBuilder(str);
+		
+		for(int i=0;i<sb.length();i++){
+		    char x=sb.charAt(i);
+		    if(sb.charAt(i)>='a' && sb.charAt(i)<='z'){
+		        x=(char)(x-32);
+		        sb.setCharAt(i,x);
+		    }
+		    else if(x>='A' && x<='Z'){
+		       x=(char)(x+32);
+		        sb.setCharAt(i,x);
+		    }
+		    
+		    
+		}
+		
+		str=sb.toString();
+
+		return str;
+	}
+	public static void main(String[] args) {
+		Scanner scn = new Scanner(System.in);
+		String str = scn.next();
+		System.out.println(toggleCase(str));
+	}
+
+}
