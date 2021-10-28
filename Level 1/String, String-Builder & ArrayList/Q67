@@ -6,7 +6,7 @@ public class Main {
 	public static String toggleCase(String str){
 		//write your code here
 		StringBuilder sb=new StringBuilder(str);
-		
+		// used string-builder for mutability
 		for(int i=0;i<sb.length();i++){
 		    char x=sb.charAt(i);
 		    if(sb.charAt(i)>='a' && sb.charAt(i)<='z'){
